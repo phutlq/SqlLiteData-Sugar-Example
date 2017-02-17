@@ -33,8 +33,7 @@
          //  * DATABASE: Name of the generated sqlite database file. eg: app_name.db
          //  * VERSION: Version of your database schema.
          //  * QUERY_LOG: Logs the generated Select queries.
-         //  * DOMAIN_PACKAGE_NAME: Specify a package name where your domain/entity             
-         //    classes are present. This helps in smoother table creation.
+         //  * DOMAIN_PACKAGE_NAME: Specify a package name where your domain/entity classes are present.This helps in smoother table creation.
 
          <meta-data android:name="DATABASE" android:value="sugar_example.db" />
          <meta-data android:name="VERSION" android:value="2" />
@@ -123,8 +122,7 @@ public class Book extends SugarRecord {
 ```
 #!java
 
-// When you add a new data entity to table, Sugar will auto genarate a Id. You can use
-// TableName.getId() to get it. 
+// When you add a new data entity to table, Sugar will auto genarate a Id. You can use TableName.getId() to get it. 
 Book book = Book.findById(Book.class, hotelTable.getId());
 book.title = "updated title here"; // modify the values
 book.edition = "3rd edition";
