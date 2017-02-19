@@ -11,20 +11,23 @@
 
 * Gradle:
    
-      
-```
-#!java
 
-   compile 'com.github.satyan:sugar:1.4'
-```
 
+```
+#!
+
+compile 'com.github.satyan:sugar:1.4'
+```
 
 
 * AndroidManifest.xml:
         
          
+
+
 ```
-#!java
+#!
+
 
 <application android:label="@string/app_name" android:icon="@drawable/icon"
          android:name="com.orm.SugarApp">
@@ -45,13 +48,14 @@
 ```
 
 
+
 ### How to use ###
 
 * Create a table
 
-         
 ```
-#!java
+#!
+
 
 public class Book extends SugarRecord {
          String title;
@@ -64,42 +68,57 @@ public class Book extends SugarRecord {
          this.title = title;
          this.edition = edition;
         }
-        }
+}
+
 ```
+
+
 
 
 * Add entity
 
        
+
 ```
-#!java
+#!
+
 
         Book book = new Book("Title here", "2nd edition")
         book.save();
 ```
 
+
+
         
 * Get list entity
 
+
+
+  
        
 ```
-#!java
+#!
 
-       List<Book> bookList;  
+List<Book> bookList;  
        long count = Book.Count(Book.class);
        if(count>0)  
        {  
        bookList= Book.listAll(Book.class);  
        }  
+
 ```
+
+
+
 
 
 * Get list entity with equals to:     
     
 
-      
+
+   
 ```
-#!java
+#!
 
       List<Book> user_list = new ArrayList<>();
       long count = Book.Count(Book.class);
@@ -114,13 +133,17 @@ public class Book extends SugarRecord {
       {  
       //there are records matching your query.   
       }  
-      }  
+    }
 ```
+
  * Update entity
 
 
+
+
+
 ```
-#!java
+#!
 
 // When you add a new data entity to table, Sugar will auto genarate a Id. You can use TableName.getId() to get it. 
 Book book = Book.findById(Book.class, hotelTable.getId());
@@ -129,25 +152,34 @@ book.edition = "3rd edition";
 book.save(); // updates the previous entry with new values.
 ```
 
+
+
  * Delete entity
 
 
+
+
+
 ```
-#!java
+#!
 
 Book book = Book.findById(Book.class, 1);
 book.delete();
+
 ```
+
  
  * Bulk Operation
 
 
 ```
-#!java
+#!
 
 List<Book> books = Book.listAll(Book.class);
 Book.deleteAll(Book.class);
 ```
+
+
 
 
 ### Link ###
