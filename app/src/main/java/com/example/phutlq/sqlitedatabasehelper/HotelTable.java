@@ -2,6 +2,7 @@ package com.example.phutlq.sqlitedatabasehelper;
 
 import com.google.common.base.Strings;
 import com.orm.SugarRecord;
+import com.orm.dsl.Ignore;
 
 /**
  * Created by PhuTLQ on 2/16/2017.

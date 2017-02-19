@@ -1,33 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.phutlq.sqlitedatabasehelper.MainActivity">
 
-
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/activity_main_list_hotel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_below="@+id/activity_main_list_hotel"
-        android:weightSum="3">
-
-        <Button
-            android:id="@+id/activity_main_buton_add"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Add" />
-
-    </LinearLayout>
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="15dp" />
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/activity_main_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_add_24dp"
+        android:tint="@android:color/white" />
 </RelativeLayout>

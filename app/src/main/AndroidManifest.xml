@@ -17,6 +17,9 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".AddHotelActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
         <meta-data android:name="DATABASE" android:value="mei_reve_example.db" />
         <meta-data android:name="VERSION" android:value="2" />
         <meta-data android:name="QUERY_LOG" android:value="true"/>
