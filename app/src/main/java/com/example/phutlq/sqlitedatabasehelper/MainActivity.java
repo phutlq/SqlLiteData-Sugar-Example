@@ -34,18 +34,28 @@ public class MainActivity extends AppCompatActivity {
         long count = HotelTable.count(HotelTable.class);
         if(count>0)
         {
-            mListHotel = HotelTable.listAll(HotelTable.class);
             mListHotelAdapter = new ListHotelAdapter(this,mListHotel);
+            mListHotel = HotelTable.listAll(HotelTable.class);
             mListViewHotel.setAdapter(mListHotelAdapter);
             mListHotelAdapter.notifyDataSetChanged();
             mListViewHotel.setOnItemClickListener((parent, view, position, id) -> {
-                DialogHelper.callDialog(MainActivity.this,Constant.TYPE_UPDATE,mListHotel.get(position),mListHotelAdapter);
-                mListHotelAdapter.notifyDataSetChanged();
+                DialogHelper.callDialog(MainActivity.this,Constant.TYPE_UPDATE,mListHotel.get(position));
+                reloadAllData();
+
             });
         }
         mButtonAdd.setOnClickListener(v -> {
-            DialogHelper.callDialog(MainActivity.this,Constant.TYPE_ADD,mHotelTable,mListHotelAdapter);
-            mListHotelAdapter.notifyDataSetChanged();
+            DialogHelper.callDialog(MainActivity.this,Constant.TYPE_ADD,mHotelTable);
+            reloadAllData();
         });
     }
+
+    private void reloadAllData(){
+        mListHotel.clear();
+        mListHotel = HotelTable.listAll(HotelTable.class);
+        mListHotelAdapter = new ListHotelAdapter(this,mListHotel);
+        mListViewHotel.setAdapter(mListHotelAdapter);
+        mListHotelAdapter.notifyDataSetChanged();
+    }
+
 }

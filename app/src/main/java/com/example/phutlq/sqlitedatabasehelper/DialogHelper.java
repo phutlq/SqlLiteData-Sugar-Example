@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 public class DialogHelper {
 
-    public static void callDialog(final Context context, final int type, final HotelTable hotelTable,ListHotelAdapter listHotelAdapter) {
+    public static void callDialog(final Context context, final int type, final HotelTable hotelTable) {
 
         AlertDialog optionDialog = new AlertDialog.Builder(context).create();
         optionDialog.setCancelable(true);
@@ -38,16 +38,17 @@ public class DialogHelper {
             buttonUpdate.setVisibility(View.GONE);
             buttonDelete.setText("Add a new hotel");
             buttonDelete.setOnClickListener(v -> {
-                if (editTextHotelName.getText().toString()==null || editTextHotelName.getText().toString()==null) {
+                if (editTextHotelName.getText().toString().length() == 0|| editTextHotelAdress.getText().toString().length() == 0) {
                     Toast.makeText(context, "Please fill in all feild", Toast.LENGTH_SHORT).show();
+                    return;
                 } else {
                     HotelTable hotelTableTable = new HotelTable(editTextHotelName.getText().toString(), editTextHotelAdress.getText().toString());
                     hotelTableTable.save();
                     editTextHotelName.setText(null);
                     editTextHotelAdress.setText(null);
                     optionDialog.dismiss();
-                    listHotelAdapter.notifyDataSetChanged();
                     Toast.makeText(context, "Hotel was added to list", Toast.LENGTH_SHORT).show();
+                    return;
                 }
             });
             buttonCancel.setOnClickListener(v -> optionDialog.dismiss());
@@ -58,10 +59,12 @@ public class DialogHelper {
             editTextHotelAdress.setText(hotelTable.getAdress1());
             buttonUpdate.setOnClickListener(v -> {
                 if (type == Constant.TYPE_UPDATE) {
-                    if (editTextHotelName.getText().toString().length()==0 || editTextHotelName.getText().toString().length()==0) {
+                    if (editTextHotelName.getText().toString().length()==0 || editTextHotelAdress.getText().toString().length()==0) {
                         Toast.makeText(context, "Please fill in all field", Toast.LENGTH_SHORT).show();
-                    } else if (editTextHotelName.getText().toString().equals(hotelTable.getName()) && editTextHotelName.getText().toString().equals(hotelTable.getAdress1())) {
+                        return;
+                    } else if (editTextHotelName.getText().toString().equals(hotelTable.getName()) && editTextHotelAdress.getText().toString().equals(hotelTable.getAdress1())) {
                         Toast.makeText(context, "No field changed", Toast.LENGTH_SHORT).show();
+                        return;
                     } else {
                         HotelTable hotelTableTable = HotelTable.findById(HotelTable.class, hotelTable.getId());
                         hotelTableTable.name = editTextHotelName.getText().toString();
@@ -71,6 +74,7 @@ public class DialogHelper {
                         editTextHotelAdress.setText(null);
                         optionDialog.dismiss();
                         Toast.makeText(context, "Hotel was updated information", Toast.LENGTH_SHORT).show();
+                        return;
                     }
                 } else {
                     HotelTable hotelTableTable = HotelTable.findById(HotelTable.class, hotelTable.getId());
